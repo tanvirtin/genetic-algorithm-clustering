@@ -3,20 +3,33 @@ package com.tin.algorithm.geneticalgorithm;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class UserClassifier {
 	
-	private List<User> users;
+	private ArrayList<User> users;
 	
-	
-	public UserClassifier() {
+	/*
+	 * Takes in a list of users that is going to be classified
+	 */
+	public UserClassifier(ArrayList<User> users) {
 		// will contain the list of users
-		users = new ArrayList<User>();
+		this.users = users;
 	}
 	
-	public void loadUsersFromFile(String path) throws FileNotFoundException {
+	
+	
+	
+	
+	
+	
+		
+	public static void main(String[] args) throws FileNotFoundException {
+		
+		String path = "./data/data-1.txt";
+		
+		ArrayList<User> users = new ArrayList<User>();
+		
 		File file = new File(path);
 		
 		Scanner scanner = new Scanner(file);
@@ -35,14 +48,9 @@ public class UserClassifier {
 		}
 		// close the scanner
 		scanner.close();
-	}
-	
-	public static void main(String[] args) throws FileNotFoundException {
 		
-		UserClassifier userClassifier = new UserClassifier();
 		
-		userClassifier.loadUsersFromFile("./data/data-1.txt");
-		
+		UserClassifier userClassifier = new UserClassifier(users);
 	}
 	
 }
