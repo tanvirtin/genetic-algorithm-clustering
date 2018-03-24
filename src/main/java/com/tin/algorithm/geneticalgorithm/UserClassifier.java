@@ -5,6 +5,15 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/*
+ * Create genes and these genes will store unique user ids using those ids we can assign
+ * what cluster they will belong to
+ * I have to make 4 integer genes which will be my clusters
+ * and my chromosomes will consist of these clusters
+ * Integer gene will have a random value between 0 to length of the users data and this data
+ * will get changed using the fitness function as we switch the centroids
+ */
+
 public class UserClassifier {
 	
 	private ArrayList<User> users;
@@ -16,41 +25,4 @@ public class UserClassifier {
 		// will contain the list of users
 		this.users = users;
 	}
-	
-	
-	
-	
-	
-	
-	
-		
-	public static void main(String[] args) throws FileNotFoundException {
-		
-		String path = "./data/data-1.txt";
-		
-		ArrayList<User> users = new ArrayList<User>();
-		
-		File file = new File(path);
-		
-		Scanner scanner = new Scanner(file);
-		
-		int numUsers = scanner.nextInt();
-		int numFeatures = scanner.nextInt();
-		
-		for (int i = 0; i < numUsers; ++i) {
-			String name = scanner.next();
-			User newUser = new User(name, numFeatures);
-			for (int j = 0; j < numFeatures; ++j) {
-				newUser.setFeature(j, scanner.nextDouble());
-			}
-			users.add(newUser);
-			System.out.println(newUser);
-		}
-		// close the scanner
-		scanner.close();
-		
-		
-		UserClassifier userClassifier = new UserClassifier(users);
-	}
-	
 }
