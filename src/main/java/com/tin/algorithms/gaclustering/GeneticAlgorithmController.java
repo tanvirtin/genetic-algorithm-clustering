@@ -1,4 +1,4 @@
-package com.tin.algorithm.geneticalgorithm;
+package com.tin.algorithms.gaclustering;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,10 +20,10 @@ public class GeneticAlgorithmController {
 		return instance;
 	}
 	
-	public ArrayList<User> loadData() throws FileNotFoundException {
+	public ArrayList<Data> loadData() throws FileNotFoundException {
 		String path = "./data/data-1.txt";
 		
-		ArrayList<User> users = new ArrayList<User>();
+		ArrayList<Data> users = new ArrayList<Data>();
 		
 		File file = new File(path);
 		
@@ -34,7 +34,7 @@ public class GeneticAlgorithmController {
 		
 		for (int i = 0; i < numUsers; ++i) {
 			String name = scanner.next();
-			User newUser = new User(name, numFeatures);
+			Data newUser = new Data(name, numFeatures);
 			for (int j = 0; j < numFeatures; ++j) {
 				newUser.setFeature(j, scanner.nextDouble());
 			}
@@ -51,8 +51,8 @@ public class GeneticAlgorithmController {
 		
 		GeneticAlgorithmController gac = GeneticAlgorithmController.getInstance();
 		
-		ArrayList<User> users = gac.loadData();
+		ArrayList<Data> users = gac.loadData();
 		
-		UserClassifier userClassifier = new UserClassifier(users);	
+		DataClassifier userClassifier = new DataClassifier(users);	
 	}
 }

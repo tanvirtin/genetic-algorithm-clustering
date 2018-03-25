@@ -1,9 +1,11 @@
-package com.tin.algorithm.geneticalgorithm;
+package com.tin.algorithms.gaclustering;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import org.jgap.Genotype;
 
 /*
  * Create genes and these genes will store unique user ids using those ids we can assign
@@ -14,14 +16,14 @@ import java.util.Scanner;
  * will get changed using the fitness function as we switch the centroids
  */
 
-public class UserClassifier {
+public class DataClassifier {
 	
-	private ArrayList<User> users;
+	private ArrayList<Data> users;
 	
 	/*
 	 * Takes in a list of users that is going to be classified
 	 */
-	public UserClassifier(ArrayList<User> users) {
+	public DataClassifier(ArrayList<Data> users) {
 		// will contain the list of users
 		this.users = users;
 	}

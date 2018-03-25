@@ -1,6 +1,6 @@
-package com.tin.algorithm.geneticalgorithm;
+package com.tin.algorithms.gaclustering;
 
-public class User {
+public class Data {
 	private String name;
 
 	private double[] features;
@@ -8,7 +8,7 @@ public class User {
 	private int cluster;
 	private int lastCluster;
 	
-	public User(String name, int numFeatures) {
+	public Data(String name, int numFeatures) {
 		this.name = name;
 		this.numFeatures = numFeatures;
 		
@@ -22,7 +22,7 @@ public class User {
 	/*
 	 * Copy constructors
 	 */
-	public User(User data) {
+	public Data(Data data) {
 		name = data.name;
 		numFeatures = data.numFeatures;
 		features = new double[numFeatures];
