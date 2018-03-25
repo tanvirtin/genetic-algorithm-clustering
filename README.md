@@ -1,2 +1,3 @@
-# Genetic Algorithm
-A genetic algorithm implementation to group users of similar interests into clusters.
+# Clustering Using Genetic Algorithm
+
+Creating clusters using a given dataset using genetic algorithm, an alternate to kmeans clustering.
