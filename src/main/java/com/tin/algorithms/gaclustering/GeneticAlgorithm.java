@@ -1,27 +1,22 @@
 package com.tin.algorithms.gaclustering;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import org.jgap.Chromosome;
 import org.jgap.Configuration;
 import org.jgap.DeltaFitnessEvaluator;
 import org.jgap.Gene;
 import org.jgap.Genotype;
-import org.jgap.IChromosome;
 import org.jgap.InvalidConfigurationException;
 import org.jgap.impl.DefaultConfiguration;
 import org.jgap.impl.IntegerGene;
-import org.jgap.impl.SwappingMutationOperator;
 
 public class GeneticAlgorithm {
 	
 	private ArrayList<Data> data;
 	
     private Configuration conf;
-    private SwappingMutationOperator swapper;
     private ClusteringFitnessFunction fitnessFunction;
      
     private Chromosome clusterChromosome;

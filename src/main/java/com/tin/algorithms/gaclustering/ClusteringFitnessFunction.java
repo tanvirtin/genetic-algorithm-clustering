@@ -7,7 +7,8 @@ import org.jgap.Gene;
 import org.jgap.IChromosome;
 
 public class ClusteringFitnessFunction extends FitnessFunction {
-
+	
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Data> data;
 	
 	public ClusteringFitnessFunction(ArrayList<Data> data) {
@@ -65,28 +66,6 @@ public class ClusteringFitnessFunction extends FitnessFunction {
 		}
 		return false;
 	}
-	/*
-	 * Finds the distance between the centroids and the 3 other centroids
-	 * @param centroidIndex the index of the centroid whos distance is calculated
-	 * @param chromosome to extract the rest of the centroids
-	 */
-	private double distanceBetweenCentroids(int centroidIndex, IChromosome chromosome) {
-		double totalDistance = 0;
-		for (int i = 0; i < chromosome.size(); ++i) {
-			Gene integerGene = chromosome.getGene(i);
-			int otherCentroidIndex = (Integer) integerGene.getAllele();
-			
-			if (centroidIndex != otherCentroidIndex) {
-				Data centroid = data.get(centroidIndex);
-				Data otherCentroid = data.get(otherCentroidIndex);
-				
-				totalDistance += findDistance(centroid, otherCentroid);
-			}
-		}
-	
-		return totalDistance;
-	}
-	
 	
 	/*
 	 * Lets say we are determining 4 clusters. We take one cluster find the distance of that
@@ -119,7 +98,6 @@ public class ClusteringFitnessFunction extends FitnessFunction {
 		}
 		
 		double totalClusterDistance = 0;
-		double totalDistanceBetweenCentroids = 0;
 		
 		for (int i = 0; i < chromosome.size(); ++i) {
 			// getGene method returns the Gene object
@@ -134,13 +112,11 @@ public class ClusteringFitnessFunction extends FitnessFunction {
 			Data clusterCentroid = data.get(centroidIndex);
 
 			double distanceBetweenClusterAndDataset = datasetClusterDistance(clusterCentroid);
-			double distanceBetweenCentroids = distanceBetweenCentroids(centroidIndex, chromosome);
 			
 			totalClusterDistance += distanceBetweenClusterAndDataset;
-			totalDistanceBetweenCentroids += distanceBetweenCentroids;
 		}
 		
-		double fitnessValue = totalClusterDistance / totalDistanceBetweenCentroids;
+		double fitnessValue = totalClusterDistance;
 		
 		return fitnessValue;
 	}

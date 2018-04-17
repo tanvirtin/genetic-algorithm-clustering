@@ -1,5 +1,3 @@
 # Clustering Using Genetic Algorithm
 
-Creating clusters using a given dataset using genetic algorithm, an alternate to kmeans clustering.
-
-TODO - Remove calculation of the distance between the selected clusters from the fitness equation.
+This program is an implementation of an algorithm that generates optimal initial centroid values to begin KMeans clustering with using a Genetic Algorithm.

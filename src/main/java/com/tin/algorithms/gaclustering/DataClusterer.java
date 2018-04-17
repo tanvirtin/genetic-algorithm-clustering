@@ -21,9 +21,7 @@ public class DataClusterer {
 		evolutionIterations = 100;
 	}
 	
-	public ArrayList<Data> loadData() throws FileNotFoundException {
-		String path = "./data/data-1.txt";
-		
+	public ArrayList<Data> loadData(String path) throws FileNotFoundException {		
 		ArrayList<Data> users = new ArrayList<Data>();
 		
 		File file = new File(path);
@@ -47,8 +45,10 @@ public class DataClusterer {
 		return users;
 	}
 	
-	public void createClusters() throws FileNotFoundException, InvalidConfigurationException {		
-		ArrayList<Data> users = loadData();
+	public Data[] createClusters(String path) throws FileNotFoundException, InvalidConfigurationException {		
+		Data[] clusters = new Data[numClusters];
+		
+		ArrayList<Data> users = loadData(path);
 		
 		// create the instance of the genetic algorithm
 		GeneticAlgorithm ga = new GeneticAlgorithm(users, numClusters);	
@@ -63,8 +63,13 @@ public class DataClusterer {
 			System.out.println("Highest Fitness on evolution " + i + " -> " + fitness);
         }
 		IChromosome solution = population.getFittestChromosome();
+		
+		
         for (int i = 0; i < solution.size(); ++i) {
-        	System.out.println(solution.getGene(i).getAllele());
+        	int userIndex = (Integer) solution.getGene(i).getAllele();
+        	clusters[i] = users.get(userIndex);
         } 
+        
+        return clusters;
 	}
 }
